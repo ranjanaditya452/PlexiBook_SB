@@ -15,11 +15,17 @@ import com.example.PlexiBook.inventoryservice.service.InventoryService;
 @RequestMapping("/api/v1")
 public class InventoryController {
 
-	@Autowired
+
     private	InventoryService inventoryService;
 	
+    @Autowired
+    public InventoryController(final InventoryService inventoryService)
+    {
+    	this.inventoryService=inventoryService;
+    }
+    
 	@GetMapping("/inventory/events")
-	public @ResponseBody List<EventInventoryResponse>()
+	public @ResponseBody List<EventInventoryResponse> inventoryGetAllEvents()
 	{
 		return inventoryService.getAllEvents();
 	}
