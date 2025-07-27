@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
-public class EventInventoryResponse {
-	private String event;
-	private Long capacity;
-	private Venue  venue;
+@NoArgsConstructor 
+public class VenueInventoryReponse {
 
+	private Long venueId;
+	private Long totalCapacity;
+	private String venueName;	
 }
