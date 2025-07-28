@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor 
-public class VenueInventoryReponse {
-
+public class VenueInventoryResponse {
 	private Long venueId;
 	private Long totalCapacity;
 	private String venueName;	

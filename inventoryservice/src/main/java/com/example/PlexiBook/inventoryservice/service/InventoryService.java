@@ -1,9 +1,9 @@
 package com.example.PlexiBook.inventoryservice.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.example.PlexiBook.inventoryservice.response.VenueInventoryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,6 @@ import com.example.PlexiBook.inventoryservice.entity.Venue;
 import com.example.PlexiBook.inventoryservice.repository.EventRepository;
 import com.example.PlexiBook.inventoryservice.repository.VenueRepository;
 import com.example.PlexiBook.inventoryservice.response.EventInventoryResponse;
-import com.example.PlexiBook.inventoryservice.response.VenueInventoryReponse;
 
 @Service
 public class InventoryService {
@@ -39,10 +38,10 @@ public class InventoryService {
 				
 	}
 
-	public VenueInventoryReponse getVenueById(final Long venueId) {
+	public VenueInventoryResponse getVenueById(final Long venueId) {
 		final Venue venue = venueRepository.findById(venueId).orElse(null);
 		
-		return VenueInventoryReponse.builder()
+		return VenueInventoryResponse.builder()
 				.venueId(venue.getId())
 				.venueName(venue.getName())
 				.totalCapacity(venue.getTotalCapacity()).build();
@@ -50,4 +49,15 @@ public class InventoryService {
 		
 	}
 
+	public EventInventoryResponse getEventInventory(final Long eventId) {
+		final Event event = eventRepository.findById(eventId).orElse(null);
+
+		return EventInventoryResponse.builder()
+				.event(event.getName())
+				.capacity(event.getLeftCapacity())
+				.venue(event.getVenue())
+				.ticketPrice(event.getTicketPrice())
+				.eventId(event.getId())
+				.build();
+	}
 }
