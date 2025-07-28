@@ -11,10 +11,12 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BookingResponse {
-    private Long bookingId;
-    private Long userId;
-    private Long eventId;
-    private Long ticketCount;
+public class InventoryResponse {
+
+    private  Long eventId;
+    private String event;
+    private Long capacity;
+    private VenueResponse  venue;
     private BigDecimal ticketPrice;
+
 }

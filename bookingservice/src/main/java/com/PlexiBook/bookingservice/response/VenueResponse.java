@@ -1,20 +1,20 @@
 package com.PlexiBook.bookingservice.response;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BookingResponse {
-    private Long bookingId;
-    private Long userId;
-    private Long eventId;
-    private Long ticketCount;
-    private BigDecimal ticketPrice;
+public class VenueResponse {
+
+    private Long id;
+    private String name;
+    private String address;
+    private Long totalCapacity;
 }

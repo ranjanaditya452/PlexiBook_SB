@@ -5,6 +5,7 @@ import com.PlexiBook.bookingservice.entity.Customer;
 import com.PlexiBook.bookingservice.repository.CustomerRepository;
 import com.PlexiBook.bookingservice.request.BookingRequest;
 import com.PlexiBook.bookingservice.response.BookingResponse;
+import com.PlexiBook.bookingservice.response.InventoryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,9 @@ public class BookingService {
 
             throw new RuntimeException("User Not Found");
         }
-        //check inventory
-
+        //check inventory space
+        final InventoryResponse inventoryResponse = inventoryServiceClient.getInventory(request.getEventId());
+        System.out.println(inventoryResponse);
 
         return BookingResponse.builder().build();
     }
