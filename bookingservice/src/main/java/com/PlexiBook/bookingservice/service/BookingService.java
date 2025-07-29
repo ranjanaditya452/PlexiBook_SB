@@ -30,7 +30,12 @@ public class BookingService {
         }
         //check inventory space
         final InventoryResponse inventoryResponse = inventoryServiceClient.getInventory(request.getEventId());
-        System.out.println(inventoryResponse);
+        if(inventoryResponse.getCapacity()<request.getTicketCount() )
+        {
+            throw new RuntimeException("Not enough inventory");
+        }
+        //if cond passed create booking
+
 
         return BookingResponse.builder().build();
     }

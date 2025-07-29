@@ -12,5 +12,3 @@ services:
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - db-data:/var/lib/mysql
       - db-data:/var/log/mysql # This line is usually not necessary for basic persistence
-volumes:
-  db-data:
