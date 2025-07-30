@@ -4,11 +4,8 @@ import java.util.List;
 
 import com.example.PlexiBook.inventoryservice.response.VenueInventoryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.PlexiBook.inventoryservice.response.EventInventoryResponse;
 import com.example.PlexiBook.inventoryservice.service.InventoryService;
@@ -42,6 +39,13 @@ public class InventoryController {
 	public @ResponseBody EventInventoryResponse inventoryForEvent(@PathVariable long eventId)
 	{
 		return inventoryService.getEventInventory(eventId);
+	}
+	@PutMapping("/inventory/event/{eventId}/capacity/{amount}")
+	public ResponseEntity<Void> updateEventCapacity(@PathVariable Long eventId,
+													@PathVariable("amount") Long ticketsBooked)
+	{
+			inventoryService.updateEventCapacity(eventId,ticketsBooked);
+			return ResponseEntity.ok().build();
 	}
 
 }

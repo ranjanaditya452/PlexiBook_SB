@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.example.PlexiBook.inventoryservice.response.VenueInventoryResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import com.example.PlexiBook.inventoryservice.repository.EventRepository;
 import com.example.PlexiBook.inventoryservice.repository.VenueRepository;
 import com.example.PlexiBook.inventoryservice.response.EventInventoryResponse;
 
+@Slf4j
 @Service
 public class InventoryService {
 
@@ -45,10 +47,7 @@ public class InventoryService {
 				.venueId(venue.getId())
 				.venueName(venue.getName())
 				.totalCapacity(venue.getTotalCapacity()).build();
-		
-		
 	}
-
 	public EventInventoryResponse getEventInventory(final Long eventId) {
 		final Event event = eventRepository.findById(eventId).orElse(null);
 
@@ -59,5 +58,12 @@ public class InventoryService {
 				.ticketPrice(event.getTicketPrice())
 				.eventId(event.getId())
 				.build();
+	}
+	public void updateEventCapacity(final Long eventId,final Long ticketsBooked)
+	{
+		final Event event = eventRepository.findById(eventId).orElse(null);
+		event.setLeftCapacity(event.getLeftCapacity()-ticketsBooked);
+		eventRepository.saveAndFlush(event);
+		log.info("Updated event capacity for event id: {} with tickets booked: {}",eventId,ticketsBooked);
 	}
 }
