@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class BookingResponse {
-    private Long bookingId;
     private Long userId;
     private Long eventId;
     private Long ticketCount;
