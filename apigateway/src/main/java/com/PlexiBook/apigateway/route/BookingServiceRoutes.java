@@ -41,8 +41,7 @@ public class BookingServiceRoutes {
         return GatewayRouterFunctions.route("booking-service-api-docs")
                 .route(RequestPredicates.path("/docs/bookingservice/v3/api-docs"),
                         HandlerFunctions.http("http://localhost:8081"))
-                .filter(setPath("/v3/api-docs"))
-                .build();
+                .filter(setPath("/v3/api-docs")).build();
     }
 
 }
