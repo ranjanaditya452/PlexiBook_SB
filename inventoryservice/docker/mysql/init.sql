@@ -1,2 +1,2 @@
-CREATE DATANASE IF NOT EXISTS ticketing;
+CREATE DATABASE IF NOT EXISTS ticketing;
 USE ticketing;

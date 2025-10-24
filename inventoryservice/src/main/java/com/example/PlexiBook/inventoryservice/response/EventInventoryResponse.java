@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class EventInventoryResponse {
 
-	private  Long eventId;
+	private Long eventId;
 	private String event;
 	private Long capacity;
 	private Venue  venue;
