@@ -23,7 +23,6 @@ public class OrderService {
     }
 
     @KafkaListener(topics = "booking", groupId = "order-service")
-
     public void orderEvent(BookingEvent bookingEvent) {
         log.info("Recieved order event: {}", bookingEvent);
 

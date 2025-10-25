@@ -66,8 +66,5 @@ public class BookingService {
                 .totalPrice(inventoryResponse.getTicketPrice().multiply(BigDecimal.valueOf(request.getTicketCount())))
                 .build();
     }
-    private Long userId;
-    private Long eventId;
-    private Long ticketCount;
-    private BigDecimal totalPrice;
+
 }
