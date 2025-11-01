@@ -24,7 +24,7 @@ public class SecurityConfig {
         return httpSecurity.authorizeHttpRequests(authorizeRequests->
                 authorizeRequests.requestMatchers(excludedUrls).permitAll().anyRequest().authenticated())
                 .oauth2ResourceServer(oauth->oauth.jwt(Customizer.withDefaults()))
-                .build();
+                .build(); 
     }
 
     @Bean
