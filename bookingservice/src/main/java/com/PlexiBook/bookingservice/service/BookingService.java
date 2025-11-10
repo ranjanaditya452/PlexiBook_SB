@@ -57,6 +57,7 @@ public class BookingService {
                 .build();
     }
 
+    //booking event
     private BookingEvent createBookingEvent(final BookingRequest request,final Customer customer,final InventoryResponse inventoryResponse) {
 
         return BookingEvent.builder()
