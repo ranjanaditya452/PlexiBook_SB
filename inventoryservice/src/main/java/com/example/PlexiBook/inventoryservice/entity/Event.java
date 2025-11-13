@@ -21,7 +21,6 @@ public class Event {
 
 
 	@Id
-	
 	private Long id;
 	
 	@Column(name ="name")

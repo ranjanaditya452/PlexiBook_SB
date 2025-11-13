@@ -22,6 +22,7 @@ public class OrderService {
         this.inventoryServiceClient=inventoryServiceClient;
     }
 
+    //this method is called automatically whenever it recieves a bookingevent from kafka
     @KafkaListener(topics = "booking", groupId = "order-service")
     public void orderEvent(BookingEvent bookingEvent) {
         log.info("Recieved order event: {}", bookingEvent);

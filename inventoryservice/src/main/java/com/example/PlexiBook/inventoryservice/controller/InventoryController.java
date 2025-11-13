@@ -28,7 +28,8 @@ public class InventoryController {
     {
     	this.inventoryService=inventoryService;
     }
-    
+
+	//get all events
 	@GetMapping("/inventory/events")
 	public @ResponseBody List<EventInventoryResponse> inventoryGetAllEvents()
 	{
@@ -41,11 +42,14 @@ public class InventoryController {
 		return inventoryService.getVenueById(venueId);
 	}
 
+	//specific inventory for a single event
 	@GetMapping("/inventory/event/{eventId}")
 	public @ResponseBody EventInventoryResponse inventoryForEvent(@PathVariable long eventId)
 	{
 		return inventoryService.getEventInventory(eventId);
 	}
+
+	//update event seats
 	@PutMapping("/inventory/event/{eventId}/capacity/{amount}")
 	public ResponseEntity<Void> updateEventCapacity(@PathVariable Long eventId,
 													@PathVariable("amount") Long ticketsBooked)
